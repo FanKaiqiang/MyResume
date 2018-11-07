@@ -1,83 +1,30 @@
-portfolio1.onclick = function () {
-    portfolioBar.className = 'bar state-1'
-}
-
-portfolio2.onclick = function () {
-    portfolioBar.className = 'bar state-2'
-}
-
-portfolio3.onclick = function () {
-    portfolioBar.className = 'bar state-3'
-}
-var topbar =document.getElementById('topbar')
+var topbar = document.getElementById('topbar')
+var specialTags = document.querySelectorAll('[data-x]')
+var minIndex = 0
 setTimeout(function () {
     startWelcome.classList.remove('active')
 }, 1600);
-
-window.onload=function(){
-    if (window.scrollY > 0) {
-        topNavBar.classList.add('sticky')
-    }
-    else {
-        topNavBar.classList.remove('sticky')
-    }
-
-    let specialTags = document.querySelectorAll('[data-x]')
-    let minIndex = 0
-    for (let i = 1; i < specialTags.length; i++) {
-        if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
-            minIndex = i
-        }
-        specialTags[i].classList.add('offset')
-    }
-
-    let id = specialTags[minIndex].id
-    let a = document.querySelector('a[href="#' + id + '"]')
-    let li = a.parentNode
-    let brother = li.parentNode.children
-    for (let i = 0; i < brother.length; i++) {
-        brother[i].classList.remove('hightlight')
-    }
-    li.classList.add('hightlight')
-    setTimeout(function () {
-        topbar.classList.remove('offset')
-        specialTags[0].classList.remove('offset')
-    }, 1600);
+for (let i = 1; i < specialTags.length && window.scrollY < 100; i++) {
+    specialTags[i].classList.add('offset')
 }
+scrolling()
 
+setTimeout(function () {
+    topbar.classList.remove('offset')
+    specialTags[0].classList.remove('offset')
+}, 1600);
 
 window.onscroll = function () {
-    if (window.scrollY > 0) {
-        topNavBar.classList.add('sticky')
-    }
-    else {
-        topNavBar.classList.remove('sticky')
-    }
-
-    let specialTags = document.querySelectorAll('[data-x]')
-    let minIndex = 0
-    for (let i = 1; i < specialTags.length; i++) {
-        if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+    for (let i = 0; i < specialTags.length; i++) {
+        if (Math.abs(specialTags[i].offsetTop - window.scrollY) < 500) {
             minIndex = i
         }
     }
     specialTags[minIndex].classList.remove('offset')
-    let id = specialTags[minIndex].id
-    let a = document.querySelector('a[href="#' + id + '"]')
-    let li = a.parentNode
-    let brother = li.parentNode.children
-    for (let i = 0; i < brother.length; i++) {
-        brother[i].classList.remove('hightlight')
-    }
-    li.classList.add('hightlight')
+
+    scrolling()
 }
 
-
-
-function animate(time) {
-    requestAnimationFrame(animate)
-    TWEEN.update(time)
-}
 requestAnimationFrame(animate)
 
 let liTags = document.querySelectorAll('nav.menu > ul > li')
@@ -113,4 +60,38 @@ for (let i = 0; i < aTags.length; i++) {
             })//更新界面
             .start()//开始缓动
     }
+}
+
+portfolio1.onclick = function () {
+    portfolioBar.className = 'bar state-1'
+}
+
+portfolio2.onclick = function () {
+    portfolioBar.className = 'bar state-2'
+}
+
+portfolio3.onclick = function () {
+    portfolioBar.className = 'bar state-3'
+}
+
+function scrolling() {
+    if (window.scrollY > 0) {
+        topNavBar.classList.add('sticky')
+    }
+    else {
+        topNavBar.classList.remove('sticky')
+    }
+    let id = specialTags[minIndex].id
+    let a = document.querySelector('a[href="#' + id + '"]')
+    let li = a.parentNode
+    let brother = li.parentNode.children
+    for (let i = 0; i < brother.length; i++) {
+        brother[i].classList.remove('hightlight')
+    }
+    li.classList.add('hightlight')
+}
+
+function animate(time) {
+    requestAnimationFrame(animate)
+    TWEEN.update(time)
 }
