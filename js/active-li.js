@@ -1,6 +1,6 @@
 !function () {
     var view = document.querySelectorAll('nav.menu > ul > li')
-    var contorller = {
+    var controller = {
         view: null,
         init: function (view) {
             this.view = view
@@ -24,5 +24,5 @@
             element.classList.remove('active')
         }
     }
-    contorller.init(view)
+    controller.init(view)
 }.call()

@@ -150,14 +150,18 @@
     </section>
     <section data-x class="portfolio" id="sideWork">
         <h2>作品集</h2>
-        <div class="works" style="height:606px;">
-            <div class="big" style="top: 0;left: 0;">
-                <img src="./img/1.jpg" alt="作品1"></div>
-            <div class="small" style="top: 0;left: 625px;">
-                <img src="./img/2.jpg" alt="作品1"></div>
-            <div class="small" style="top: 312px;left: 625px;">
-                <img src="./img/3.jpg" alt="作品1"></div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./img/001.png" alt="导航网站"></div>
+                <div class="swiper-slide"><img src="./img/002.jpg" alt="Canvas画板"></div>
+                <div class="swiper-slide"><img src="./img/003.png" alt="苹果风格轮播"></div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
         </div>
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script src="./js/auto-slide-up.js"></script>
@@ -165,6 +169,7 @@
     <script src="./js/sticky-topbar.js"></script>
     <script src="./js/active-li.js"></script>
     <script src="./js/swiper.min.js"></script>
+    <script src="./js/init-swiper.js"></script>
 </body>
 
 </html>
