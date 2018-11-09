@@ -11,23 +11,27 @@
         },
         initialization: function () {
             var view = this.view
-            for (let i = 1; i < view.length && window.scrollY < 100; i++) {
-                view[i].classList.add('offset')
-            }
             setTimeout(function () {
+                if (window.pageYOffset < 100) {
+                    for (let i = 0; i < view.length; i++) {
+                        view[i].classList.add('offset')
+                    }
+                }
                 startWelcome.classList.remove('active')
                 view[0].classList.remove('offset')
             }, 1600);
         },
         scrolling: function () {
+
             var view = this.view
+            console.log(window.pageYOffset)
             var minIndex = this.minIndex
-            for (let i = 0; i < view.length; i++) {
+            for (let i = 1; i < view.length; i++) {
                 if (Math.abs(view[i].offsetTop - window.scrollY) < 450) {
                     minIndex = i
+                    view[minIndex].classList.remove('offset')
                 }
             }
-            view[minIndex].classList.remove('offset')
             let id = view[minIndex].id
             let a = document.querySelector('a[href="#' + id + '"]')
             let li = a.parentNode
@@ -37,8 +41,8 @@
             }
             li.classList.add('hightlight')
         },
-        bindEvents:function(){
-            window.onscroll = ()=> {
+        bindEvents: function () {
+            window.onscroll = () => {
                 this.scrolling()
             }
         }

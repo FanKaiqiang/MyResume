@@ -7,15 +7,6 @@ section.portfolio {
     margin-top: 60px;
 }
 
-section.portfolio>h2 {
-    text-align: center;
-    color: #3d4451;
-    font-size: 34px;
-    line-height: 1.2;
-    font-weight: 600;
-    margin-bottom: 30px;
-}
-
 section.portfolio .swiper-container {
     width: 668px;
     height: 501px;

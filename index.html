@@ -45,7 +45,7 @@
                     </li>
                     <li><a href="#calendar">日历</a></li>
                     <li><a href="#contact">联系方式</a></li>
-                    <li><a href="#other">其他</a></li>
+                    <li><a href="#message">其他</a></li>
                 </ul>
             </nav>
         </div>
@@ -163,6 +163,16 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </section>
+    <section data-x class="message" id="message">
+        <h2>留言</h2>
+        <ol id="messageList"></ol>
+        <form>
+            姓名<input type="text" name="name">
+            留言<input type="text" name="content">
+            <input type="submit" value="提交">
+        </form>
+    </section>
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script src="./js/auto-slide-up.js"></script>
     <script src="./js/smoothly-navigation.js"></script>
@@ -170,6 +180,7 @@
     <script src="./js/active-li.js"></script>
     <script src="./js/swiper.min.js"></script>
     <script src="./js/init-swiper.js"></script>
+    <script src="./js/massage.js"></script>
 </body>
 
 </html>
