@@ -45,7 +45,11 @@
           array.forEach((item) => {
             let li = document.createElement('li')
             li.innerText = `${item.name}: ${item.content}`
-            this.messageList.appendChild(li)
+            if (this.messageList.children[0]) {
+              this.messageList.insertBefore(li, this.messageList.children[0])
+            } else {
+              this.messageList.appendChild(li)
+            }
           })
         }
       )
@@ -60,18 +64,23 @@
       let myForm = this.form
       let content = myForm.querySelector('input[name=content]').value
       let name = myForm.querySelector('input[name=name]').value
-      this.model.save(name, content).then(function (object) {
-        let li = document.createElement('li')
-        li.innerText = `${object.attributes.name}: ${object.attributes.content}`
-        let messageList = document.querySelector('#messageList')
-        if (messageList.children[0]) {
-          messageList.insertBefore(li, messageList.children[0])
-        } else {
-          messageList.appendChild(li)
-        }
-        myForm.querySelector('input[name=content]').value = ''
-        console.log(messageList.children[0])
-      })
+      if (name === "" || content === "") {
+        alert("请完整填写您的姓名与留言信息")
+      } else {
+        this.model.save(name, content).then(function (object) {
+          let li = document.createElement('li')
+          li.innerText = `${object.attributes.name}: ${object.attributes.content}`
+          let messageList = document.querySelector('#messageList')
+          if (messageList.children[0]) {
+            messageList.insertBefore(li, messageList.children[0])
+            console.log(message.offsetTop)
+            scrollTo(0,(message.offsetTop)-100)
+          } else {
+            messageList.appendChild(li)
+          }
+          myForm.querySelector('input[name=content]').value = ''
+        })
+      }
     }
 
   }

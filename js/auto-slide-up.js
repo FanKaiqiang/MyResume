@@ -22,9 +22,7 @@
             }, 1600);
         },
         scrolling: function () {
-
             var view = this.view
-            console.log(window.pageYOffset)
             var minIndex = this.minIndex
             for (let i = 1; i < view.length; i++) {
                 if (Math.abs(view[i].offsetTop - window.scrollY) < 450) {
